@@ -1,0 +1,85 @@
+<div class="spinner-wrapper">
+<div class="spinner"></div>
+</div>
+<div class="row">
+    <div class="col s12 m8 ui">
+        <h3 style="color: #000;">{{story.title}}
+            <small>{{{editIcon story.user user story._id false}}}</small>
+        </h3>
+        <div class="sharing-button">
+            <button onclick="share('{{story._id}}')" class="tooltipped" data-position="bottom" data-tooltip="Copy the shareable link of post" style="border: none;background-color: #aacfd5ff;"><a style="font-size: 24px;text-decoration:none"><i class="fas fa-share"></i></a></button>
+            {{> _likeBtn}}
+        </div>
+        <span id="counts" style="font-size:1rem; border: 3px solid #fff;padding:0.15rem">Views: {{vis}}</span><br>
+        <span style="font-size:larger;"> {{date}}</span>
+        <div class="card story single">
+            <div class="card-content img-resp">
+                {{{story.body}}}
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card center-align" style="border-radius: 10px;">
+            <div class="card-content">
+                <span class="card-title">{{story.user.displayName}}</span>
+                <img src="{{story.user.image}}" loading="lazy" class="circle responsive-img img-small">
+            </div>
+            <div class="card-action">
+                <a href="/stories/user/{{story.user._id}}">More From {{story.user.firstName}}</a>
+            </div>
+        </div>
+    </div>
+    <form class="col s12 m4" method="POST" onsubmit="return doComment(this);">
+        <input type="hidden" name="post_id" value="{{story._id}}">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="input_text" value="{{loggedIn}}" type="text" data-length="45" name="username" disabled>
+            <label for="input_text" style="color: #000;">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea" name="comment" data-length="1500" required ></textarea>
+            <label for="textarea2" style="color: #000;">Comment</label>
+          </div>
+           <button class="btn waves-effect waves-light" type="submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        function doComment(form){
+            let name = document.getElementById('input_text').value
+            let com = document.getElementById('textarea2').value
+            let someText = com.replace(/(\r\n|\n|\r)/gm, "");
+            $.ajax({
+                url: "/do-comment/posted/{{story._id}}/{{loggedIn}}",
+                method: "POST",
+                data: {username: form.username.value, comment: someText, post_id:"{{story._id}}"}, 
+                success: setInterval(location.reload(true),1000) 
+            })
+            
+            return false
+        }
+    </script>
+    {{#if comments}}
+    <div class="col s12 m8">
+        <h1 style="text-decoration: underline; font-size:2rem">COMMENTS</h1>
+    </div>
+    {{/if}}
+    {{#each comments}}
+    <div class="col s12 m8">
+        <div class="card horizontal">
+            <div class="card-stacked">
+                <div class="card-content" style="padding: 6px 14px;font-size:14px">
+                    <p>{{comment}}</p>
+                </div>
+                <div class="card-action" style="padding: 6px 14px;font-size:10px">
+                    <p>{{username}}</p>
+                </div>
+            </div>
+            <div class="card-image" style="margin-right: 5px;">
+                {{{deleteComment ../loggedIn username ../story._id comment false}}}
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

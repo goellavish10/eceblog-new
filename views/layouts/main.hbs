@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <script src="https://cdn.tiny.cloud/1/um69thzdl3syz40hyu1qu3xywd1ndr96m4vf6ebhtl10d85z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      
+
+var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+tinymce.init({
+  selector: '#full-featured',
+  plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+  imagetools_cors_hosts: ['picsum.photos'],
+  menubar: 'file edit view insert format tools table help',
+  toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+  toolbar_sticky: true,
+  autosave_ask_before_unload: true,
+  autosave_interval: '30s',
+  autosave_prefix: '{path}{query}-{id}-',
+  autosave_restore_when_empty: false,
+  autosave_retention: '2m',
+  image_advtab: true,
+  font_formats:
+    "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Cedarville Cursive=cedarville cursive; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Dancing Script=dancing script; Georgia=georgia,palatino; Girassol=girassol; Helvetica=helvetica; Impact=impact,chicago; Itim=itim; Oswald=oswald; Satisfy=satisfy; Shadows Into Light=shadows into light; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva;",
+  link_list: [
+    { title: 'My page 1', value: 'https://www.tiny.cloud' },
+    { title: 'My page 2', value: 'http://www.moxiecode.com' }
+  ],
+  image_list: [
+    { title: 'My page 1', value: 'https://www.tiny.cloud' },
+    { title: 'My page 2', value: 'http://www.moxiecode.com' }
+  ],
+  image_class_list: [
+    { title: 'None', value: '' },
+    { title: 'Some class', value: 'class-name' }
+  ],
+  importcss_append: true,
+  file_picker_callback: function (callback, value, meta) {
+    /* Provide file and text for the link dialog */
+    if (meta.filetype === 'file') {
+      callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
+    }
+
+    /* Provide image and alt text for the image dialog */
+    if (meta.filetype === 'image') {
+      callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
+    }
+
+    /* Provide alternative source and posted for the media dialog */
+    if (meta.filetype === 'media') {
+      callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
+    }
+  },
+  templates: [
+        { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
+    { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
+    { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
+  ],
+  template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+  template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+  height: 600,
+  image_caption: true,
+  quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+  noneditable_noneditable_class: 'mceNonEditable',
+  toolbar_mode: 'sliding',
+  contextmenu: 'link image imagetools table',
+  skin: useDarkMode ? 'oxide-dark' : 'oxide',
+  content_css: useDarkMode ? 'dark' : 'default',
+  fontsize_formats:
+    "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 24pt 30pt 32pt 34pt 36pt 40pt 48pt 60pt 72pt 96pt",
+  content_style:
+    "@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400;700&family=Girassol&family=Itim&family=Satisfy&family=Shadows+Into+Light&display=swap'); body {font-size: 16pt;}"
+ });
+
+
+
+
+
+
+    </script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" type="image/jpg" href="/images/favicon-16x16.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script src="/js/style.js"></script>
+    <title>Lost Thoughts</title>
+</head>
+
+<body>
+    {{> _header}}
+    {{> _add_btn}}
+    <div class="container js-ui">
+        {{{body}}}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'))
+        M.FormSelect.init(document.querySelector('#status'))
+        M.FormSelect.init(document.querySelector('#category'))
+    </script>
+    <footer>
+      
+      <div class="bottom">
+        <center>
+          <span class="credit">Created By <a href="https://www.linkedin.com/in/goellavish10" target="_blank">Lavish Goyal</a> | </span>
+          <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
+        </center>
+      </div>
+    </footer>
+</body>
+
+</html>

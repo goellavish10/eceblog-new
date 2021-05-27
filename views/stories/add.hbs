@@ -1,0 +1,49 @@
+<div class="spinner-wrapper">
+<div class="spinner"></div>
+</div>
+<h3 style="color: #000;font-weight: bolder;">Add Story</h3>
+<div class="row">
+    <form action="/stories" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title">
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="category" name="category">
+                    <option value="blog" selected>Blog</option>
+                    <option value="poem">Poem</option>
+                    <option value="story">Story</option>
+                    <option value="writeUp">Write Up</option>
+                </select>
+                <label for="category">Status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <h5 style="color: #000;">Tell Us Your Story:</h5>
+                {{!-- <div id="toolbar-container"></div> --}}
+                <textarea id="full-featured" name="body"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/login/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>

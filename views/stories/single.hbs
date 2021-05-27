@@ -1,0 +1,39 @@
+<div class="spinner-wrapper">
+    <div class="spinner"></div>
+</div>
+<h1 style="color: #000000;">Stories from,</h1>
+<div class="row">
+    <div class="col s12 m4">
+        <div class="card center-align single-user-card" style="border-radius: 10px; background-color: #aacfd5ff;">
+            <div class="card-content">
+                <span class="card-title" style="font-weight: bold;color:#298a91ff;">{{detail.displayName}}</span>
+                <img src="{{detail.image}}" class="circle responsive-img img-small" style="width: 155px;">
+            </div>
+        </div>
+    </div>
+<div class="row">
+    {{#each stories}}
+    <div class="col s12 m4">
+        <div class="card" aos="zoom-in">
+            <div class="card-image">
+                {{{editIcon user ../user _id}}}
+            </div>
+            <div class="card-content center-align" style="background-color: #298a91ff;">
+                <h5 style="color: #fff;" class="story-title-resp">{{truncate title 10}}</h5>
+                {{!-- <p style="color: white;">{{stripTags (truncate body 100)}}</p> --}}
+                <br>
+                <br>
+                <div class="chip resp-chip">
+                    <img src="{{user.image}}" alt="" class="userimage">
+                    <a href="/stories/user/{{user._id}}" class="username">{{user.displayName}}</a>
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}" class="btn grey read-btn-resp">Read the post</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No stories to display</p>
+    {{/each}}
+</div>

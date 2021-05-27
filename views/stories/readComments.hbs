@@ -1,0 +1,29 @@
+<div class="spinner-wrapper">
+<div class="spinner"></div>
+</div>
+<h1 style="color: #000000;text-align: center;font-size: 2.5rem"><u>Title:</u> {{post.title}}</h1>
+{{#if comments}}
+<div class="col s12 m8">
+        <h1 style="text-decoration: underline; font-size:2rem;color:rgb(228, 151, 58)"><i>COMMENTS</i></h1>
+</div>
+{{else}}
+<div class="col s12 m8">
+        <h1 style="text-decoration: underline; font-size:2rem;color:rgb(228, 151, 58)"><i>No Comments posted</i></h1>
+        <p style="font-size: 22px;">Be the first one to comment on the post 😉</p>
+        <a href="/stories/{{idOfPost}}" class="btn grey read-btn-resp">Read, Like & Comment here</a>
+</div>
+    {{/if}}
+    {{#each comments}}
+    <div class="col s12 m8">
+        <div class="card horizontal">
+            <div class="card-stacked">
+                <div class="card-content" style="padding: 6px 14px;font-size:14px">
+                    <p>{{comment}}</p>
+                </div>
+                <div class="card-action" style="padding: 6px 14px;font-size:10px">
+                    <p>{{username}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
