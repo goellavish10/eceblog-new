@@ -32,6 +32,7 @@ router.post('/search', async (req,res)=>{
     const stories = await Story.find({ $text: { $search: fltrTitle } }).populate('user').sort({createdAt: 'desc'}).lean()
     res.render('stories/index', {
       stories,
+      pageHeading: `Search results for '${fltrTitle}'`,
     })
   } catch (err) {
     console.log(err)
@@ -55,6 +56,7 @@ router.get('/', ensureAuth,async (req, res) => {
     const numberOfStories = await Story.countDocuments({status: 'public'});
     res.render('stories/index', {
       stories,
+      pageHeading: "All Posts",
       currentPage: page,
       pages: Math.ceil(numberOfStories/resPerPage)
     })
