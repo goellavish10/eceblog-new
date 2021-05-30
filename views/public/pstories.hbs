@@ -2,9 +2,10 @@
   <div class="spinner"></div>
 </div>
 <img src="images/blog.jpg" class="header-img" alt="blog-fest" />
-<h1 style="color: #000000;text-align: center;">All Posts</h1>
+{{> _publicSearch}}
+<h1 style="color: #000000;text-align: center;">{{pageHeading}}</h1>
 <div class="row">
-
+{{#if pages}}
   <div class="center-align s12">
     <h6>
       Page
@@ -13,6 +14,9 @@
       <span>{{pages}}</span>
     </h6>
   </div>
+{{else}}
+<h6 class="center-align s12"><a href="/">BACK TO HOMEPAGE</a></h6>
+{{/if}}
   {{{checkingCurrentPagePublic currentPage pages}}}
   {{#each stories}}
     <div class="col s12 m6 l4">

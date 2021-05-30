@@ -25,6 +25,20 @@ router.post('/', ensureAuth, async (req, res) => {
   }
 })
 
+// Searching Posts
+router.post('/search', async (req,res)=>{ 
+  let fltrTitle = req.body.fltrTitle
+  try {
+    const stories = await Story.find({ $text: { $search: fltrTitle } }).populate('user').sort({createdAt: 'desc'}).lean()
+    res.render('stories/index', {
+      stories,
+    })
+  } catch (err) {
+    console.log(err)
+    res.redirect('/')
+  }
+})
+
 // @desc    Show all stories
 // @route   GET /stories
 router.get('/', ensureAuth,async (req, res) => {

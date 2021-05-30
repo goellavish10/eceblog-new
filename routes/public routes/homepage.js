@@ -22,6 +22,7 @@ router.get("/", async (req, res) => {
     res.render("public/pstories", {
       layout: "public",
       stories,
+      pageHeading: "All Posts",
       currentPage: page,
       pages: Math.ceil(numOfStories / resPerPage),
     });
@@ -41,6 +42,23 @@ router.get("/Users", async (req, res) => {
     users,
   });
 });
+
+// Search
+router.post('/search', async (req,res)=>{ 
+  let fltrTitle = req.body.fltrTitle
+
+  try {
+    const stories = await Story.find({ $text: { $search: fltrTitle } }).populate('user').sort({createdAt: 'desc'}).lean()
+    res.render('public/pstories', {
+      layout: 'public',
+      stories,
+      pageHeading: `Search results for '${fltrTitle}'`,
+    })
+  } catch (err) {
+    console.log(err)
+    res.redirect('/')
+  }
+})
 
 /* Show Stories according to the category */
 
