@@ -70,7 +70,7 @@ router.get('/', ensureAuth,async (req, res) => {
 // @route   GET /stories
 router.get('/shortlisted', ensureAuth, async (req, res) => {
   try {
-    const stories = await Story.find({ status: 'public' })
+    const stories = await Story.find({ tag: 'shortlisted' })
       .populate('user')
       .sort({ createdAt: 'desc' })
       .lean()
