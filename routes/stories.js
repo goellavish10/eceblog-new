@@ -66,6 +66,25 @@ router.get('/', ensureAuth,async (req, res) => {
   }
 })
 
+// @desc    Show shortlisted stories
+// @route   GET /stories
+router.get('/shortlisted', ensureAuth, async (req, res) => {
+  try {
+    const stories = await Story.find({ status: 'public' })
+      .populate('user')
+      .sort({ createdAt: 'desc' })
+      .lean()
+
+    res.render('stories/shortlisted', {
+      stories,
+      pageHeading: "Shortlisted Posts for BLOG FEST",
+    })
+  } catch (err) {
+    console.error(err)
+    res.render('error/500')
+  }
+})
+
 // @desc    Show single story
 // @route   GET /stories/:id
 router.get('/:id', ensureAuth, async (req, res) => {

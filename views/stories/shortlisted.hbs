@@ -1,0 +1,47 @@
+<div class="spinner-wrapper">
+<div class="spinner"></div>
+</div>
+<img src="images/blog.jpg" class="header-img" alt="blog-fest" />
+<h1 style="color: #000000;text-align: center;">{{pageHeading}}</h1>
+<div class="row">
+    {{#each stories}}
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-image">
+                {{{editIcon user ../user _id}}}
+            </div>
+            <div class="card-content center-align" style="background-color: #298a91ff;">
+                <h5 style="color: #fff;" class="story-title-resp tooltipped" data-position="bottom" data-tooltip="{{title}}">{{truncate title 16}}</h5>
+                <p style="color: rgb(190,190,190);">category: {{category}}</p>
+                <br>
+                <br>
+                <div class="chip resp-chip">
+                    <img src="{{user.image}}" loading="lazy" alt="{{user.displayName}}" class="userimage">
+                    <a href="/stories/user/{{user._id}}" class="username">{{truncate user.displayName 21}}</a>
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}" class="btn grey read-btn-resp">Read the Post</a>
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}/comments" class="btn grey read-btn-resp">Read the Comments</a>
+            </div>
+            <div class="card-action center-align">
+                {{#if comments}}
+                <i class="fas fa-comment"></i>    {{comments.length}}
+                {{else}}
+                <i class="fas fa-comment"></i>    0
+                {{/if}}
+                <i class="fas fa-eye"></i> {{visits}}
+                {{#if likers}}
+                <i class="fas fa-thumbs-up"></i> {{likers}}
+                {{else}}
+                <i class="fas fa-thumbs-up"></i> 0
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No stories to display</p>
+    {{/each}}
+</div>

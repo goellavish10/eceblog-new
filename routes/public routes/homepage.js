@@ -32,15 +32,23 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* Showing all the users */
+/* Showing shortlisted posts */
 
-router.get("/Users", async (req, res) => {
-  let users = await User.find({}).sort({ firstName: 1 }).lean();
+router.get("/shortlisted", async (req, res) => {
+  let stories = await Story.find({tag: "shortlisted"}).sort({ title: 1 }).lean().populate("user");
+  
+  try {
+    res.render("public/shortlisted", {
+      layout: "public",
+      stories,
+      pageHeading: "Shortlisted Posts for BLOG FEST",
+    });
+  } catch (err) {
+    console.log(err)
+    res.render("error/public_error/500")
+  }
 
-  res.render("public/users.hbs", {
-    layout: "public",
-    users,
-  });
+  
 });
 
 // Search
