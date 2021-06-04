@@ -30,7 +30,7 @@ p {
 }
 
 .shortlist-card{
-  background: url("../images/bg.png");
+  background: url("../images/bg(1).png");
 }
 
 .login-container {
@@ -274,5 +274,8 @@ footer {
   }
   .js-ui {
     margin: 0 5px;
+  }
+  .shortlist-card{
+    background: url("../images/bg.png");
   }
 }
