@@ -18,6 +18,29 @@
 <h6 class="center-align s12"><a href="/stories">BACK TO HOMEPAGE</a></h6>
 {{/if}}
 {{{checkingCurrentPage currentPage pages}}}
+<div class="col s12 m6 l4">
+    <div
+      class="card center-align shortlist-card"
+      style="border-radius: 10px;"
+    >
+      <div class="card-content">
+        <span
+          class="card-title single-username"
+          style="font-weight: bold;color:rgb(255, 255, 255);padding: 2px; letter-spacing:1px;background: rgba(255, 126, 126, 0.295)"
+        >Shortlisted Posts</span>
+        <img
+          src="images/short.jpg"
+          class="responsive-img short-img single-userimage" 
+        />
+      </div>
+      <div class="card-action center-align">
+          <a href="/stories/shortlisted" class="btn grey read-btn-resp">Shotlisted Posts</a>
+      </div>
+      <div class="card-action center-align">
+          <h6 style="color: rgb(0, 0, 0);">The posts are chosen by our english professor Ms. Preeti Puri, and are verified for plagirism by whole class.</h6>
+      </div>
+    </div>
+  </div>
     {{#each stories}}
     <div class="col s12 m6 l4">
         <div class="card">
