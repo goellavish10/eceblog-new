@@ -7,7 +7,7 @@ const User = require("../../models/User");
 
 // Loading the homepage for no logged in users
 router.get("/", async (req, res) => {
-  const resPerPage = 18; // results per page
+  const resPerPage = 17; // results per page
   let page = req.query.page || 1; // assigning the page query
   try {
     const stories = await Story.find({ status: "public" })
@@ -35,8 +35,11 @@ router.get("/", async (req, res) => {
 /* Showing shortlisted posts */
 
 router.get("/shortlisted", async (req, res) => {
-  let stories = await Story.find({tag: "shortlisted"}).sort({ title: 1 }).lean().populate("user");
-  
+  let stories = await Story.find({ tag: "shortlisted" })
+    .sort({ title: 1 })
+    .lean()
+    .populate("user");
+
   try {
     res.render("public/shortlisted", {
       layout: "public",
@@ -44,29 +47,30 @@ router.get("/shortlisted", async (req, res) => {
       pageHeading: "Shortlisted Posts for BLOG FEST",
     });
   } catch (err) {
-    console.log(err)
-    res.render("error/public_error/500")
+    console.log(err);
+    res.render("error/public_error/500");
   }
-
-  
 });
 
 // Search
-router.post('/search', async (req,res)=>{ 
-  let fltrTitle = req.body.fltrTitle
+router.post("/search", async (req, res) => {
+  let fltrTitle = req.body.fltrTitle;
 
   try {
-    const stories = await Story.find({ $text: { $search: fltrTitle } }).populate('user').sort({createdAt: 'desc'}).lean()
-    res.render('public/pstories', {
-      layout: 'public',
+    const stories = await Story.find({ $text: { $search: fltrTitle } })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean();
+    res.render("public/pstories", {
+      layout: "public",
       stories,
       pageHeading: `Search results for '${fltrTitle}'`,
-    })
+    });
   } catch (err) {
-    console.log(err)
-    res.redirect('/')
+    console.log(err);
+    res.redirect("/");
   }
-})
+});
 
 /* Show Stories according to the category */
 

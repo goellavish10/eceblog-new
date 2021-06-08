@@ -24,6 +24,12 @@ jQuery(document).ready(function ($) {
   });
   //Fire it when the page first loads:
   alterClass();
+  $(".judges-img").on("dragstart", function (event) {
+    event.preventDefault();
+  });
+  $(".judges-img").bind("contextmenu", function (e) {
+    return false;
+  });
 });
 
 (window.onload = function () {
