@@ -23,6 +23,7 @@ router.get("/user/:userId", async (req, res) => {
       res.render("public/singleUserStory", {
         layout: "public",
         stories,
+        headOfPage: `Posts by ${detail.displayName}`,
         detail,
       });
     }

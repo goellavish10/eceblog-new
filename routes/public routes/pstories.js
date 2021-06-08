@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
         res.render("public/showpstory", {
           layout: "public",
           story,
+          headOfPage: story.title,
           vis: post.visits + 1,
           comments,
           date,
@@ -64,6 +65,7 @@ router.get("/:id/comments", async (req, res) => {
     res.render("public/readComments", {
       layout: "public",
       post,
+      headOfPage: `Comments for the post ${post.title}`,
       comments,
     });
   } catch (err) {

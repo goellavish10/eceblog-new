@@ -22,6 +22,7 @@ router.get("/", async (req, res) => {
     res.render("public/pstories", {
       layout: "public",
       stories,
+      headOfPage: "Lost Thoughts",
       pageHeading: "All Posts",
       currentPage: page,
       pages: Math.ceil(numOfStories / resPerPage),
@@ -44,6 +45,7 @@ router.get("/shortlisted", async (req, res) => {
     res.render("public/shortlisted", {
       layout: "public",
       stories,
+      headOfPage: "Shortlisted Posts",
       pageHeading: "Shortlisted Posts for BLOG FEST",
     });
   } catch (err) {
@@ -64,6 +66,7 @@ router.post("/search", async (req, res) => {
     res.render("public/pstories", {
       layout: "public",
       stories,
+      headOfPage: "Lost Thoughts",
       pageHeading: `Search results for '${fltrTitle}'`,
     });
   } catch (err) {
@@ -86,6 +89,7 @@ router.get("/public/category/blogs", async (req, res) => {
     res.render("public/category", {
       layout: "public",
       stories,
+      headOfPage: "Category: Blog",
       category,
     });
   } catch (err) {
@@ -108,6 +112,7 @@ router.get("/public/category/story", async (req, res) => {
     res.render("public/category", {
       layout: "public",
       stories,
+      headOfPage: "Category: Story",
       category,
     });
   } catch (err) {
@@ -130,6 +135,7 @@ router.get("/public/category/poems", async (req, res) => {
     res.render("public/category", {
       layout: "public",
       stories,
+      headOfPage: "Category: Poems",
       category,
     });
   } catch (err) {
@@ -152,6 +158,7 @@ router.get("/public/category/writeups", async (req, res) => {
     res.render("public/category", {
       layout: "public",
       stories,
+      headOfPage: "Category: WriteUps",
       category,
     });
   } catch (err) {

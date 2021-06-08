@@ -1,30 +1,32 @@
-const express = require('express')
-const router = express.Router()
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const express = require("express");
+const router = express.Router();
+const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-const Story = require('../models/Story')
+const Story = require("../models/Story");
 
 // @desc    Login/Landing page
 // @route   GET /
-router.get('/', ensureGuest, (req, res) => {
-  res.render('login', {
-    layout: 'login',
-  })
-})
+router.get("/", ensureGuest, (req, res) => {
+  res.render("login", {
+    layout: "login",
+    headOfPage: "Login using NITJ account",
+  });
+});
 
 // @desc    Dashboard
 // @route   GET /dashboard
-router.get('/dashboard', ensureAuth, async (req, res) => {
+router.get("/dashboard", ensureAuth, async (req, res) => {
   try {
-    const stories = await Story.find({ user: req.user.id }).lean()
-    res.render('dashboard', {
+    const stories = await Story.find({ user: req.user.id }).lean();
+    res.render("dashboard", {
       name: req.user.firstName,
       stories,
-    })
+      headOfPage: `${req.user.firstName}'s Dashboard`,
+    });
   } catch (err) {
-    console.error(err)
-    res.render('error/500')
+    console.error(err);
+    res.render("error/500");
   }
-})
+});
 
-module.exports = router
+module.exports = router;
