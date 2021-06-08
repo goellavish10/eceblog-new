@@ -50,7 +50,7 @@ router.post("/search", async (req, res) => {
 // @desc    Show all stories
 // @route   GET /stories
 router.get("/", ensureAuth, async (req, res) => {
-  const resPerPage = 18; // results per page
+  const resPerPage = 17; // results per page
   let page = req.query.page || 1; // assigning the page query
   try {
     const stories = await Story.find({ status: "public" })
